@@ -220,4 +220,22 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
             return node.key;
         }
     }
+
+
+
+    //TODO  Defence made boolean consistent method "public" and "private", one might recursive
+    public boolean consistent(K key){
+        return findNode(root, key) != null;
+    }
+    private Node<K, V> findNode(Node<K, V> node, K key) {
+        if (node == null || key.compareTo(node.key) == 0) {
+            return node;
+        }
+        if (key.compareTo(node.key) < 0) {
+            return findNode(node.left, key);
+        } else {
+            return findNode(node.right, key);
+        }
+    }
+
 }
